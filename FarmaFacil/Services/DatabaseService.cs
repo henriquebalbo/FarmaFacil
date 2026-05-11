@@ -143,10 +143,13 @@ namespace FarmaFacil.Services
         // Busca medicamentos pelo nome (busca parcial)
         public async Task<List<Medicamento>> BuscarMedicamentoAsync(string nome)
         {
-            return await _database.Table<Medicamento>()
-                .Where(m => m.Nome.ToLower().Contains(nome.ToLower()) ||
-                            m.PrincipioAtivo.ToLower().Contains(nome.ToLower()))
-                .ToListAsync();
+            var todos = await _database.Table<Medicamento>().ToListAsync();
+
+            return todos
+                .Where(m =>
+                    m.Nome.StartsWith(nome, StringComparison.OrdinalIgnoreCase) ||
+                    m.PrincipioAtivo.StartsWith(nome, StringComparison.OrdinalIgnoreCase))
+                .ToList();
         }
 
         // Busca unidades que têm o medicamento em estoque

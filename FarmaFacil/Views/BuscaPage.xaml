@@ -25,12 +25,13 @@
         <VerticalStackLayout Grid.Row="1" BackgroundColor="White" Padding="20,16" Spacing="8">
             <Border StrokeThickness="1" Stroke="#DDEEFF" StrokeShape="RoundRectangle 12">
                 <Grid ColumnDefinitions="*,Auto">
-                    <Entry Grid.Column="0"
-                           Placeholder="Buscar medicamento ou princípio ativo..."
-                           PlaceholderColor="#90A4AE"
-                           FontSize="15"
-                           Margin="16,0,0,0"
-                           Text="{Binding TermoBusca, Mode=TwoWay}"/>
+                    <Entry x:Name="EntryBusca"
+                            Grid.Column="0"
+                            Placeholder="Buscar medicamento ou princípio ativo..."
+                            PlaceholderColor="#90A4AE"
+                            FontSize="15"
+                            Margin="16,0,0,0"
+                                Text="{Binding TermoBusca, Mode=TwoWay}"/>
                     <Button Grid.Column="1"
                             Text="🔍" FontSize="18"
                             BackgroundColor="#1565C0" TextColor="White"

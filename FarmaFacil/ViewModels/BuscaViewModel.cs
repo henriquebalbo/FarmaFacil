@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace FarmaFacil.ViewModels
 {
+
     public partial class BuscaViewModel : ObservableObject
     {
         private readonly DatabaseService _db;
@@ -101,6 +102,16 @@ namespace FarmaFacil.ViewModels
         private async Task BuscarExemplo(string termo)
         {
             TermoBusca = termo;
+        }
+
+        public void LimparBusca()
+        {
+            TermoBusca = string.Empty;
+            Resultados.Clear();
+            MostrarResultados = false;
+            MostrarDica = true;
+            SemResultados = false;
+            Mensagem = string.Empty;
         }
     }
 }

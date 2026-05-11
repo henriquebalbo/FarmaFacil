@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
              x:Class="FarmaFacil.Views.UnidadesPage"
              Title="Unidades com Estoque"
              BackgroundColor="#F4F6F9">
 
-    <Grid RowDefinitions="Auto,Auto,*">
+    <Grid RowDefinitions="Auto,Auto,220,*">
 
         <!-- HEADER -->
         <Grid Grid.Row="0" BackgroundColor="#1565C0" Padding="20,16">
@@ -30,14 +31,15 @@
         </Grid>
 
         <!-- SUBTÍTULO + BOTÃO LOCALIZAÇÃO -->
-        <Grid Grid.Row="1" BackgroundColor="White" Padding="16,14" ColumnDefinitions="*,Auto">
+        <Grid Grid.Row="1" BackgroundColor="White"
+              Padding="16,14" ColumnDefinitions="*,Auto">
             <VerticalStackLayout Grid.Column="0" Spacing="2">
                 <Label Text="Unidades com estoque disponível"
-               FontSize="15" FontAttributes="Bold" TextColor="#1A237E"/>
+                       FontSize="15" FontAttributes="Bold" TextColor="#1A237E"/>
                 <Label Text="{Binding StatusLocalizacao}"
-               FontSize="12" TextColor="#90A4AE"/>
+                       FontSize="12" TextColor="#90A4AE"/>
             </VerticalStackLayout>
-                <Button Grid.Column="1"
+            <Button Grid.Column="1"
                     Text="📍 Usar minha localização"
                     BackgroundColor="#E3F2FD"
                     TextColor="#1565C0"
@@ -45,16 +47,23 @@
                     CornerRadius="8"
                     Padding="12,8"
                     IsVisible="{Binding BuscandoLocalizacao,
-                        Converter={StaticResource InvertedBoolConverter}}"
+                                Converter={StaticResource InvertedBoolConverter}}"
                     Command="{Binding UsarLocalizacaoCommand}"/>
             <ActivityIndicator Grid.Column="1"
-                       IsRunning="{Binding BuscandoLocalizacao}"
-                       IsVisible="{Binding BuscandoLocalizacao}"
-                       Color="#1565C0"/>
+                               IsRunning="{Binding BuscandoLocalizacao}"
+                               IsVisible="{Binding BuscandoLocalizacao}"
+                               Color="#1565C0"/>
         </Grid>
 
+        <!-- MAPA INTEGRADO -->
+        <maps:Map x:Name="MapaUnidades"
+                  Grid.Row="2"
+                  IsScrollEnabled="True"
+                  IsZoomEnabled="True"
+                  MapType="Street"/>
+
         <!-- LOADING -->
-        <ActivityIndicator Grid.Row="2"
+        <ActivityIndicator Grid.Row="3"
                            IsRunning="{Binding Carregando}"
                            IsVisible="{Binding Carregando}"
                            Color="#1565C0"
@@ -62,7 +71,7 @@
                            VerticalOptions="Center"/>
 
         <!-- SEM RESULTADOS -->
-        <VerticalStackLayout Grid.Row="2"
+        <VerticalStackLayout Grid.Row="3"
                              IsVisible="{Binding SemResultados}"
                              HorizontalOptions="Center"
                              VerticalOptions="Center"
@@ -71,12 +80,10 @@
             <Label Text="Nenhuma unidade com estoque"
                    FontSize="16" FontAttributes="Bold"
                    TextColor="#607D8B" HorizontalOptions="Center"/>
-            <Label Text="Este medicamento não está disponível no momento"
-                   FontSize="13" TextColor="#90A4AE" HorizontalOptions="Center"/>
         </VerticalStackLayout>
 
         <!-- LISTA DE UNIDADES -->
-        <CollectionView Grid.Row="2"
+        <CollectionView Grid.Row="3"
                         ItemsSource="{Binding Unidades}"
                         Margin="16,12">
             <CollectionView.ItemTemplate>
@@ -87,12 +94,10 @@
                             BackgroundColor="White">
                         <VerticalStackLayout Padding="16" Spacing="8">
 
-                            <!-- Nome -->
                             <Label Text="{Binding NomeUnidade}"
                                    FontSize="16" FontAttributes="Bold"
                                    TextColor="#1A237E"/>
 
-                            <!-- Endereço -->
                             <HorizontalStackLayout Spacing="6">
                                 <Label Text="📍" FontSize="13"/>
                                 <Label Text="{Binding Endereco}"
@@ -100,7 +105,6 @@
                                        VerticalOptions="Center"/>
                             </HorizontalStackLayout>
 
-                            <!-- Horário -->
                             <HorizontalStackLayout Spacing="6">
                                 <Label Text="🕐" FontSize="13"/>
                                 <Label Text="{Binding HorarioFuncionamento}"
@@ -108,15 +112,16 @@
                                        VerticalOptions="Center"/>
                             </HorizontalStackLayout>
 
-                            <!-- Estoque + Botão -->
-                            <Grid ColumnDefinitions="*,Auto,Auto" Margin="0,4,0,0" ColumnSpacing="8">
+                            <Grid ColumnDefinitions="*,Auto,Auto"
+                                  Margin="0,4,0,0" ColumnSpacing="8">
                                 <Border Grid.Column="0"
-                                    StrokeThickness="0"
-                                    StrokeShape="RoundRectangle 8"
-                                    BackgroundColor="{Binding CorEstoque}"
-                                    Padding="12,6"
-                                      HorizontalOptions="Start">
-                                    <Label TextColor="White" FontSize="13" FontAttributes="Bold">
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 8"
+                                        BackgroundColor="{Binding CorEstoque}"
+                                        Padding="12,6"
+                                        HorizontalOptions="Start">
+                                    <Label TextColor="White"
+                                           FontSize="13" FontAttributes="Bold">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="✅ "/>
@@ -147,9 +152,8 @@
                                         Padding="14,8"
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}},
                                                   Path=BindingContext.VerDetalhesCommand}"
-                                        CommandParameter="{Binding .}"/>                
+                                        CommandParameter="{Binding .}"/>
                             </Grid>
-
                         </VerticalStackLayout>
                     </Border>
                 </DataTemplate>

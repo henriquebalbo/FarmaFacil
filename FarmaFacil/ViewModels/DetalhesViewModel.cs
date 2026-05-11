@@ -99,10 +99,35 @@ namespace FarmaFacil.ViewModels
         }
 
         [RelayCommand]
-        private void Ligar()
+        private async Task Ligar()
         {
-            if (!string.IsNullOrEmpty(Telefone))
-                PhoneDialer.Default.Open(Telefone);
+            try
+            {
+                if (string.IsNullOrEmpty(Telefone))
+                {
+                    await Shell.Current.DisplayAlertAsync("Aviso", "Telefone não disponível.", "OK");
+                    return;
+                }
+
+                // Remove caracteres não numéricos
+                var apenasDigitos = new string(Telefone.Where(char.IsDigit).ToArray());
+
+                // Adiciona código do Brasil +55
+                var numero = $"+55{apenasDigitos}";
+
+                if (PhoneDialer.Default.IsSupported)
+                {
+                    PhoneDialer.Default.Open(numero);
+                }
+                else
+                {
+                    await Launcher.Default.OpenAsync(new Uri($"tel:{numero}"));
+                }
+            }
+            catch (Exception ex)
+            {
+                await Shell.Current.DisplayAlertAsync("Erro", $"Não foi possível ligar: {ex.Message}", "OK");
+            }
         }
     }
 }
