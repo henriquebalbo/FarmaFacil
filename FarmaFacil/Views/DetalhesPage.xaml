@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FarmaFacil.Views.DetalhesPage"
+             Title="Detalhes da Unidade"
+             BackgroundColor="#F4F6F9">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- HEADER -->
+        <Grid Grid.Row="0" BackgroundColor="#1565C0" Padding="20,16">
+            <Grid ColumnDefinitions="Auto,*">
+                <Button Grid.Column="0"
+                        Text="← Voltar"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        FontSize="14"
+                        Command="{Binding VoltarCommand}"/>
+                <VerticalStackLayout Grid.Column="1"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="Center">
+                    <Label Text="💊 Farma Fácil"
+                           FontSize="18" FontAttributes="Bold"
+                           TextColor="White" HorizontalOptions="Center"/>
+                    <Label Text="Detalhes da Unidade"
+                           FontSize="13" TextColor="#BBDEFB"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+
+        <!-- CONTEÚDO -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Margin="16,16" Spacing="16">
+
+                <!-- CARD: MEDICAMENTO DISPONÍVEL -->
+                <Border Padding="20" StrokeThickness="1"
+                        Stroke="#E0E0E0" StrokeShape="RoundRectangle 12"
+                        BackgroundColor="White">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="💊 Medicamento Disponível"
+                               FontSize="13" TextColor="#90A4AE"
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding NomeMedicamento}"
+                               FontSize="20" FontAttributes="Bold"
+                               TextColor="#1A237E"/>
+                        <HorizontalStackLayout Spacing="8">
+                            <Border BackgroundColor="#E3F2FD"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 20"
+                                    Padding="10,4">
+                                <Label Text="{Binding Dosagem}"
+                                       FontSize="13" TextColor="#1565C0"
+                                       FontAttributes="Bold"/>
+                            </Border>
+                            <Label Text="{Binding Fabricante}"
+                                   FontSize="13" TextColor="#90A4AE"
+                                   VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+
+                        <!-- Quantidade -->
+                        <Border StrokeThickness="0"
+                                StrokeShape="RoundRectangle 8"
+                                BackgroundColor="{Binding CorEstoque}"
+                                Padding="14,8"
+                                HorizontalOptions="Start">
+                            <Label TextColor="White"
+                                   FontSize="14" FontAttributes="Bold">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="✅  "/>
+                                        <Span Text="{Binding QuantidadeDisponivel}"/>
+                                        <Span Text=" unidades disponíveis"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Border>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- CARD: INFORMAÇÕES DA UNIDADE -->
+                <Border Padding="20" StrokeThickness="1"
+                        Stroke="#E0E0E0" StrokeShape="RoundRectangle 12"
+                        BackgroundColor="White">
+                    <VerticalStackLayout Spacing="14">
+                        <Label Text="🏥 Informações da Unidade"
+                               FontSize="13" TextColor="#90A4AE"
+                               FontAttributes="Bold"/>
+                        <Label Text="{Binding NomeUnidade}"
+                               FontSize="18" FontAttributes="Bold"
+                               TextColor="#1A237E"/>
+
+                        <!-- Endereço -->
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="📍" FontSize="16" VerticalOptions="Start"/>
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="Endereço"
+                                       FontSize="11" TextColor="#90A4AE"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding Endereco}"
+                                       FontSize="14" TextColor="#37474F"/>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- Telefone -->
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="📞" FontSize="16" VerticalOptions="Start"/>
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="Telefone"
+                                       FontSize="11" TextColor="#90A4AE"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding Telefone}"
+                                       FontSize="14" TextColor="#37474F"/>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- Horário -->
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="🕐" FontSize="16" VerticalOptions="Start"/>
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="Horário de Funcionamento"
+                                       FontSize="11" TextColor="#90A4AE"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding Horario}"
+                                       FontSize="14" TextColor="#37474F"/>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- BOTÕES DE AÇÃO -->
+        <Grid Grid.Row="2" ColumnDefinitions="*,*"
+             Padding="16,12" ColumnSpacing="12"
+             BackgroundColor="White">
+            <Button Grid.Column="0"
+                    Text="📞 Ligar para a Unidade"
+                    BackgroundColor="#1565C0"
+                    TextColor="White"
+                    FontSize="14"
+                    CornerRadius="10"
+                    Padding="0,14"
+                    Command="{Binding LigarCommand}"/>
+            <Button Grid.Column="1"
+                    Text="🔍 Buscar outro medicamento"
+                    BackgroundColor="White"
+                    TextColor="#1565C0"
+                    FontSize="14"
+                    CornerRadius="10"
+                    Padding="0,14"
+                    BorderColor="#1565C0"
+                    BorderWidth="1.5"
+                    Command="{Binding VoltarInicioCommand}"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>

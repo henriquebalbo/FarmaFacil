@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FarmaFacil.Views.AboutPage"
+             Title="Sobre"
+             BackgroundColor="#F4F6F9">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- HEADER -->
+        <Grid Grid.Row="0" BackgroundColor="#1565C0" Padding="20,16">
+            <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                <Label Text="💊 Farma Fácil"
+                       FontSize="18" FontAttributes="Bold"
+                       TextColor="White" HorizontalOptions="Center"/>
+                <Label Text="Sobre o Projeto"
+                       FontSize="13" TextColor="#BBDEFB"
+                       HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Margin="16,16" Spacing="16">
+
+                <!-- CARD: IDENTIDADE -->
+                <Border Padding="24" StrokeThickness="1"
+                        Stroke="#E0E0E0" StrokeShape="RoundRectangle 16"
+                        BackgroundColor="White">
+                    <VerticalStackLayout Spacing="12" HorizontalOptions="Center">
+                        <Label Text="💊" FontSize="56" HorizontalOptions="Center"/>
+                        <Label Text="Farma Fácil"
+                               FontSize="26" FontAttributes="Bold"
+                               TextColor="#1A237E" HorizontalOptions="Center"/>
+                        <Label Text="Portal de Transparência de Medicamentos"
+                               FontSize="14" TextColor="#607D8B"
+                               HorizontalOptions="Center"/>
+                        <Border BackgroundColor="#E3F2FD"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 20"
+                                Padding="16,6" HorizontalOptions="Center">
+                            <Label Text="Versão 1.0 • 2026"
+                                   FontSize="12" TextColor="#1565C0"
+                                   FontAttributes="Bold"/>
+                        </Border>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- CARD: DESCRIÇÃO -->
+                <Border Padding="20" StrokeThickness="1"
+                        Stroke="#E0E0E0" StrokeShape="RoundRectangle 16"
+                        BackgroundColor="White">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="📋 Sobre o Sistema"
+                               FontSize="13" TextColor="#90A4AE"
+                               FontAttributes="Bold"/>
+                        <Label Text="O Farma Fácil é uma solução tecnológica multiplataforma projetada para centralizar e integrar dados de disponibilidade de medicamentos na rede assistencial do SUS."
+                               FontSize="14" TextColor="#37474F"
+                               LineHeight="1.5"/>
+                        <Label Text="O sistema permite ao cidadão localizar, em tempo real, o ponto de dispensação mais próximo que possua o princípio ativo desejado em estoque, promovendo a democratização do acesso à saúde pública."
+                               FontSize="14" TextColor="#37474F"
+                               LineHeight="1.5"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- CARD: EQUIPE -->
+                <Border Padding="20" StrokeThickness="1"
+                        Stroke="#E0E0E0" StrokeShape="RoundRectangle 16"
+                        BackgroundColor="White">
+                    <VerticalStackLayout Spacing="16">
+                        <Label Text="👥 Equipe de Desenvolvimento"
+                               FontSize="13" TextColor="#90A4AE"
+                               FontAttributes="Bold"/>
+
+                        <!-- Membro 1 -->
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
+                            <Border Grid.Column="0"
+                                    BackgroundColor="#1565C0"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 30"
+                                    WidthRequest="48" HeightRequest="48">
+                                <Label Text="J" FontSize="20" FontAttributes="Bold"
+                                       TextColor="White"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1"
+                                                 VerticalOptions="Center" Spacing="2">
+                                <Label Text="Josiel Danilo Rodrigues"
+                                       FontSize="15" FontAttributes="Bold"
+                                       TextColor="#1A237E"/>
+                                <Label Text="Scrum Master"
+                                       FontSize="12" TextColor="#607D8B"/>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <!-- Separador -->
+                        <BoxView HeightRequest="1" BackgroundColor="#F0F0F0"/>
+
+                        <!-- Membro 2 -->
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
+                            <Border Grid.Column="0"
+                                    BackgroundColor="#1565C0"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 30"
+                                    WidthRequest="48" HeightRequest="48">
+                                <Label Text="L" FontSize="20" FontAttributes="Bold"
+                                       TextColor="White"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1"
+                                                 VerticalOptions="Center" Spacing="2">
+                                <Label Text="Luiz Henrique Balbo"
+                                       FontSize="15" FontAttributes="Bold"
+                                       TextColor="#1A237E"/>
+                                <Label Text="Desenvolvedor"
+                                       FontSize="12" TextColor="#607D8B"/>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <!-- Separador -->
+                        <BoxView HeightRequest="1" BackgroundColor="#F0F0F0"/>
+
+                        <!-- Membro 3 -->
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
+                            <Border Grid.Column="0"
+                                    BackgroundColor="#1565C0"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 30"
+                                    WidthRequest="48" HeightRequest="48">
+                                <Label Text="W" FontSize="20" FontAttributes="Bold"
+                                       TextColor="White"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1"
+                                                 VerticalOptions="Center" Spacing="2">
+                                <Label Text="Willian Souza Nunes"
+                                       FontSize="15" FontAttributes="Bold"
+                                       TextColor="#1A237E"/>
+                                <Label Text="Product Owner"
+                                       FontSize="12" TextColor="#607D8B"/>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- CARD: ORIENTAÇÃO -->
+                <Border Padding="20" StrokeThickness="1"
+                        Stroke="#E0E0E0" StrokeShape="RoundRectangle 16"
+                        BackgroundColor="White">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="🎓 Orientação"
+                               FontSize="13" TextColor="#90A4AE"
+                               FontAttributes="Bold"/>
+                        <Label Text="Profª. Tatiana Carla de Mattos Valério Monteiro"
+                               FontSize="15" FontAttributes="Bold"
+                               TextColor="#1A237E"/>
+                        <Label Text="Curso Técnico em Desenvolvimento de Sistemas – EaD"
+                               FontSize="13" TextColor="#607D8B"/>
+                        <Label Text="Centro Paula Souza – SEAD/CGTEC"
+                               FontSize="13" TextColor="#607D8B"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- CARD: TECNOLOGIAS -->
+                <Border Padding="20" StrokeThickness="1"
+                        Stroke="#E0E0E0" StrokeShape="RoundRectangle 16"
+                        BackgroundColor="White">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="⚙️ Tecnologias Utilizadas"
+                               FontSize="13" TextColor="#90A4AE"
+                               FontAttributes="Bold"/>
+
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto"
+                              RowSpacing="10" ColumnSpacing="10">
+                            <Border Grid.Row="0" Grid.Column="0"
+                                    BackgroundColor="#E3F2FD" StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 10" Padding="12,10">
+                                <VerticalStackLayout Spacing="2">
+                                    <Label Text=".NET MAUI" FontSize="13"
+                                           FontAttributes="Bold" TextColor="#1565C0"/>
+                                    <Label Text="Framework" FontSize="11"
+                                           TextColor="#607D8B"/>
+                                </VerticalStackLayout>
+                            </Border>
+                            <Border Grid.Row="0" Grid.Column="1"
+                                    BackgroundColor="#E3F2FD" StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 10" Padding="12,10">
+                                <VerticalStackLayout Spacing="2">
+                                    <Label Text="C#" FontSize="13"
+                                           FontAttributes="Bold" TextColor="#1565C0"/>
+                                    <Label Text="Linguagem" FontSize="11"
+                                           TextColor="#607D8B"/>
+                                </VerticalStackLayout>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="0"
+                                    BackgroundColor="#E3F2FD" StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 10" Padding="12,10">
+                                <VerticalStackLayout Spacing="2">
+                                    <Label Text="SQLite" FontSize="13"
+                                           FontAttributes="Bold" TextColor="#1565C0"/>
+                                    <Label Text="Banco de Dados" FontSize="11"
+                                           TextColor="#607D8B"/>
+                                </VerticalStackLayout>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="1"
+                                    BackgroundColor="#E3F2FD" StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 10" Padding="12,10">
+                                <VerticalStackLayout Spacing="2">
+                                    <Label Text="Scrum" FontSize="13"
+                                           FontAttributes="Bold" TextColor="#1565C0"/>
+                                    <Label Text="Metodologia" FontSize="11"
+                                           TextColor="#607D8B"/>
+                                </VerticalStackLayout>
+                            </Border>
+                            <Border Grid.Row="2" Grid.Column="0"
+                                    BackgroundColor="#E3F2FD" StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 10" Padding="12,10">
+                                <VerticalStackLayout Spacing="2">
+                                    <Label Text="MVVM" FontSize="13"
+                                           FontAttributes="Bold" TextColor="#1565C0"/>
+                                    <Label Text="Arquitetura" FontSize="11"
+                                           TextColor="#607D8B"/>
+                                </VerticalStackLayout>
+                            </Border>
+                            <Border Grid.Row="2" Grid.Column="1"
+                                    BackgroundColor="#E3F2FD" StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 10" Padding="12,10">
+                                <VerticalStackLayout Spacing="2">
+                                    <Label Text="XAML" FontSize="13"
+                                           FontAttributes="Bold" TextColor="#1565C0"/>
+                                    <Label Text="Interface" FontSize="11"
+                                           TextColor="#607D8B"/>
+                                </VerticalStackLayout>
+                            </Border>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- CARD: ODS -->
+                <Border Padding="20" StrokeThickness="0"
+                        StrokeShape="RoundRectangle 16"
+                        BackgroundColor="#1565C0">
+                    <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                        <Label Text="🌍 ODS 3 — Saúde e Bem-Estar"
+                               FontSize="15" FontAttributes="Bold"
+                               TextColor="White" HorizontalOptions="Center"/>
+                        <Label Text="Alinhado aos Objetivos de Desenvolvimento Sustentável da ONU, promovendo equidade no acesso à saúde pública."
+                               FontSize="13" TextColor="#BBDEFB"
+                               HorizontalOptions="Center"
+                               HorizontalTextAlignment="Center"
+                               LineHeight="1.5"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Label Text="© 2026 Farma Fácil • Centro Paula Souza"
+                       FontSize="11" TextColor="#B0BEC5"
+                       HorizontalOptions="Center" Margin="0,4,0,24"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

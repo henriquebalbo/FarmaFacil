@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FarmaFacil.Views.ResultadoPage"
+             Title="Resultado da Busca"
+             BackgroundColor="#F4F6F9">
+
+    <Grid RowDefinitions="Auto,Auto,*">
+
+        <!-- HEADER -->
+        <Grid Grid.Row="0" BackgroundColor="#1565C0" Padding="20,16">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <Button Grid.Column="0"
+                        Text="← Voltar"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        FontSize="14"
+                        Command="{Binding VoltarCommand}"/>
+                <VerticalStackLayout Grid.Column="1"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="Center">
+                    <Label Text="💊 Farma Fácil"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Center"/>
+                    <Label Text="Resultado da Busca"
+                           FontSize="12"
+                           TextColor="#BBDEFB"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+
+        <!-- BARRA DE BUSCA + CONTADOR -->
+        <VerticalStackLayout Grid.Row="1"
+                             BackgroundColor="White"
+                             Padding="20,16"
+                             Spacing="10">
+            <Border StrokeThickness="1"
+                    Stroke="#DDEEFF"
+                    StrokeShape="RoundRectangle 10">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Entry Grid.Column="0"
+                    Placeholder="Buscar medicamento ou princípio ativo..."
+                    PlaceholderColor="#90A4AE"
+                    FontSize="15"
+                    Margin="12,0,0,0"
+                    Text="{Binding Termo, Mode=TwoWay}"
+       ReturnCommand="{Binding BuscarCommand}"/>
+                    <Button Grid.Column="1"
+                            Text="🔍"
+                            FontSize="16"
+                            BackgroundColor="#1565C0"
+                            TextColor="White"
+                            CornerRadius="10"
+                            Padding="14,10"
+                            Command="{Binding BuscarCommand}"/>
+                </Grid>
+            </Border>
+
+            <Label Text="{Binding MensagemResultado}"
+                   FontSize="13"
+                   TextColor="#607D8B"
+                   IsVisible="{Binding Carregando, Converter={StaticResource InvertedBoolConverter}}"/>
+        </VerticalStackLayout>
+
+        <!-- LOADING -->
+        <ActivityIndicator Grid.Row="2"
+                           IsRunning="{Binding Carregando}"
+                           IsVisible="{Binding Carregando}"
+                           Color="#1565C0"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+
+        <!-- SEM RESULTADOS -->
+        <VerticalStackLayout Grid.Row="2"
+                             IsVisible="{Binding SemResultados}"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             Spacing="12">
+            <Label Text="🔍" FontSize="48" HorizontalOptions="Center"/>
+            <Label Text="Nenhum medicamento encontrado"
+                   FontSize="16"
+                   FontAttributes="Bold"
+                   TextColor="#607D8B"
+                   HorizontalOptions="Center"/>
+            <Label Text="Tente outro nome ou princípio ativo"
+                   FontSize="13"
+                   TextColor="#90A4AE"
+                   HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+
+        <!-- LISTA DE RESULTADOS -->
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding Resultados}"
+                        Margin="16,12"
+                        IsVisible="{Binding SemResultados,
+                                   Converter={StaticResource InvertedBoolConverter}}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Margin="0,0,0,12"
+                            Padding="0"
+                            StrokeThickness="1"
+                            Stroke="#E0E0E0"
+                            StrokeShape="RoundRectangle 12"
+                            BackgroundColor="White">
+                        <Grid ColumnDefinitions="*,Auto" Padding="16">
+                            <VerticalStackLayout Grid.Column="0" Spacing="4">
+
+                                <Label Text="{Binding Nome}"
+                                       FontSize="17"
+                                       FontAttributes="Bold"
+                                       TextColor="#1A237E"/>
+
+                                <Label Text="{Binding PrincipioAtivo}"
+                                       FontSize="13"
+                                       TextColor="#607D8B"/>
+
+                                <HorizontalStackLayout Spacing="8" Margin="0,4,0,0">
+                                    <Border BackgroundColor="#E3F2FD"
+                                            StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 20"
+                                            Padding="10,4">
+                                        <Label Text="{Binding Dosagem}"
+                                               FontSize="12"
+                                               TextColor="#1565C0"
+                                               FontAttributes="Bold"/>
+                                    </Border>
+                                    <Label Text="{Binding Fabricante}"
+                                           FontSize="12"
+                                           TextColor="#90A4AE"
+                                           VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+
+                            </VerticalStackLayout>
+
+                            <Button Grid.Column="1"
+                                    Text="Ver onde"
+                                    BackgroundColor="#1565C0"
+                                    TextColor="White"
+                                    FontSize="13"
+                                    CornerRadius="8"
+                                    Padding="14,10"
+                                    VerticalOptions="Center"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}},
+                                              Path=BindingContext.VerOndeCommand}"
+                                    CommandParameter="{Binding .}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>
